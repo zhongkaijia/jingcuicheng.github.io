@@ -239,7 +239,7 @@
 				this.floor[floor] ++;
 				this.total += money;
 				
-				jQueryDSPUI('#cell_'+floor+'-'+number).removeClass('disabled').find('.f').append('<span>￥'+money+'</span>')
+				jQueryDSPUI('#cell_'+floor+'-'+number).removeClass('disabled').find('.f').append('<span title="+time+">￥'+money+'</span>')
 			},
 			renderALL: function(){
 
