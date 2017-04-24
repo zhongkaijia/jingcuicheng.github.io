@@ -4,13 +4,13 @@
 <head>
 	<title>煌华2栋账目明细</title>
 	<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
-	<script src="//su.bdimg.com/static/dspui/js/lib/mjquery.js"></script>
+	<script src="./jquery.js"></script>
 	<style>
 		*{
 			padding:0;
 			margin:0;
 			border:0;
-			font-family: "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, arial, Tahoma, SimSun, sans-serif;
+			font-family: "Hiragino Sans GB", "Microsoft YaH`ei", 微软雅黑, arial, Tahoma, SimSun, sans-serif;
 		}
 		@media screen and (min-width: 640px) {
 			html {
@@ -144,7 +144,13 @@
 		.cell_line.cellbg1:before {
 			color:rgba(51, 136, 255,0.09);
 		}
-		
+		#cell {
+			overflow: hidden;
+		}
+		#cell img{
+			display: inline-block;
+			width:49%;
+		}
 	</style>
 </head>
 <body>
@@ -153,9 +159,15 @@
 <dl class="mx">
 	<dt><b>概况</b></dt>
 	<dd>
-		<p>总入账: <span class="all">0</span> 元 / 总支出: <span>0</span> 元</p>
+		<p>总入账: <span class="all">0</span> 元 / 总支出: <span class="zc">0</span> 元</p>
 		<p>总结余: <span class="jy">0</span> 元</p>
 		
+	</dd>
+</dl>
+<dl class="mx">
+	<dt><b>支出明细</b></dt>
+	<dd>
+		<div id="cell"></div>
 	</dd>
 </dl>
 <dl>
@@ -165,17 +177,16 @@
 		</div>
 	</dd>
 </dl>
-<dl style="display:none;">
-	<dt><b>支出明细</b></dt>
-	<dd></dd>
-</dl>
+
 
 	<script>
 		
 		var HH = {
 			total: 0,
+			zc: 0,
 			// 缓存每层多少
 			floor: {},
+			cac: [],
 			gdb: function(num){
 				if (num<10){
 					return '0'+num;
@@ -197,6 +208,25 @@
 					}
 				}
 				jQueryDSPUI('#cellwrap').html(html.join(''))
+			},
+			/*
+			*	HH.pushSC({
+		user: "张华（13628493684） 2栋28-11",
+		money: 1000,
+		time: '2017/4/24',
+		her: "./07424_1.jpg",
+		me: "./07424_2.jpg"
+	})
+			*
+			*/
+			scindex:1,
+			pushSC: function(data){
+				var html = [];
+				html.push('<div> '+(this.scindex++)+'、'+data.time+'支出￥<span>'+data.money+'</span> 给 '+data.user+'</div>');
+				html.push('<div>用于：'+data.thing+'</div>')
+				html.push('<div><img src="'+data.me+'"/><img src="'+data.her+'"/></div>');
+				this.zc += data.money;
+				this.cac.push(html.join(''))
 			},
 			push: function(data){
 				var keys = data.account.split(',');
@@ -245,7 +275,9 @@
 			renderALL: function(){
 
 				jQueryDSPUI('.all').html(this.total);
-				jQueryDSPUI('.jy').html(this.total);
+				jQueryDSPUI('.zc').html(this.zc)
+				jQueryDSPUI('.jy').html(this.total-this.zc);
+				jQueryDSPUI('#cell').html(this.cac.join(''));
 
 				for(var p in this.floor){
 					jQueryDSPUI('#line_'+p).attr('data-tips','第'+p+'层(' + this.gdb(this.floor[p])+'/12)')
@@ -416,4 +448,14 @@
 			money: 50,
 			time: '2017/03/25'
 		})
+	</script>
+	<script>
+	HH.pushSC({
+		user: "张华(13628493684)2栋28-11",
+		money: 1000,
+		thing: "二栋入户大厅设计师出场费",
+		time: '2017/4/24',
+		her: "./07424_1.jpg",
+		me: "./07424_2.jpg"
+	})
 	</script>
