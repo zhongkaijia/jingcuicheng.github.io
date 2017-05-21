@@ -167,7 +167,7 @@
 	<dd>
 		<p>总入账: <span class="all">0</span> 元 / 总支出: <span class="zc">0</span> 元</p>
 		<p>总结余: <span class="jy">0</span> 元</p>
-		
+		<p>已缴纳<span id="qian"></span>户，未缴纳<span id="qian_w"></span>,共408户</p>
 	</dd>
 </dl>
 <dl class="mx">
@@ -188,6 +188,7 @@
 	<script>
 		
 		var HH = {
+			f:0,
 			total: 0,
 			zc: 0,
 			// 缓存每层多少
@@ -275,7 +276,7 @@
 				}
 				this.floor[floor] ++;
 				this.total += money;
-				
+				this.f+=1;
 				jQueryDSPUI('#cell_'+floor+'-'+number).removeClass('disabled').find('.f').append('<span title="+time+">￥'+money+'</span>')
 			},
 			renderALL: function(){
@@ -284,7 +285,8 @@
 				jQueryDSPUI('.zc').html(this.zc)
 				jQueryDSPUI('.jy').html(this.total-this.zc);
 				jQueryDSPUI('#cell').html(this.cac.join(''));
-
+				jQueryDSPUI('#qian').html(this.f);
+				jQueryDSPUI('#qian_w').html(408 - this.f)
 				for(var p in this.floor){
 					jQueryDSPUI('#line_'+p).attr('data-tips','第'+p+'层(' + this.gdb(this.floor[p])+'/12)')
 				}
