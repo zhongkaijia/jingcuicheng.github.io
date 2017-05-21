@@ -272,6 +272,7 @@
 				}
 				this.floor[floor] ++;
 				this.total +=1;
+				console.log(floor,number)
 				
 				jQueryDSPUI('#cell_'+floor+'-'+number).addClass('disabled').find('.p').remove();
 			},
@@ -309,10 +310,6 @@
 			account: '2-1,2-3|4,2-8,2-11',
 			time: '2017/05/21'
 		})
-		HH.push({
-			account: '2-1,2-3|4,2-8,2-11',
-			time: '2017/05/21'
-		})
 
 		HH.push({
 			account: '3-5,4-3,5-1,5-3,5-5',
@@ -336,7 +333,7 @@
 		})
 
 		HH.push({
-			account: '10-3,10-5|6,10-8|9',
+			account: '10-2|5,10-9',
 			time: '2017/05/21'
 		})
 
