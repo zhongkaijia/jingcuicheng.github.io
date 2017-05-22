@@ -151,7 +151,9 @@
 			display: inline-block;
 			width:49%;
 		}
-
+		a{
+			color:blue;
+		}
 		body > a{
 			margin-left:10px;
 			color:blue;
@@ -161,13 +163,13 @@
 </head>
 <body>
 <h2>2栋财务收支明细</h2>
-<a href="./qz.html">电梯修建签字表</a>
+<a href="./qz.html">电梯修建签字表</a> <a href="ls.html">@阳斌 @露露妹移交详细</a>
 <dl class="mx">
 	<dt><b>概况</b></dt>
 	<dd>
-		<p>总入账: <span class="all">0</span> 元 / 总支出: <span class="zc">0</span> 元</p>
+		<p>总入账: <span class="all">0</span> 元 （其中包括从@阳斌处移交<span>6872</span>元，<a href="ls.html">移交详细</a>） <br/> 总支出: <span class="zc">0</span> 元</p>
 		<p>总结余: <span class="jy">0</span> 元</p>
-		<p>已缴纳<span id="qian"></span>户，未缴纳<span id="qian_w"></span>,共408户</p>
+		<p style="display:none;">已缴纳<span id="qian"></span>户，未缴纳<span id="qian_w"></span>,共408户</p>
 	</dd>
 </dl>
 <dl class="mx">
@@ -180,6 +182,7 @@
 	<dt><b>入账明细</b></dt>
 	<dd>
 		<div class="table" id="cellwrap">
+
 		</div>
 	</dd>
 </dl>
@@ -280,7 +283,7 @@
 				jQueryDSPUI('#cell_'+floor+'-'+number).removeClass('disabled').find('.f').append('<span title="+time+">￥'+money+'</span>')
 			},
 			renderALL: function(){
-
+				this.total += 6872;
 				jQueryDSPUI('.all').html(this.total);
 				jQueryDSPUI('.zc').html(this.zc)
 				jQueryDSPUI('.jy').html(this.total-this.zc);

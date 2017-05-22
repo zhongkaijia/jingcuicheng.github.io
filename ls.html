@@ -1,0 +1,207 @@
+
+<!doctype html>
+<html>
+
+<head>
+	<title>@阳斌 @露露妹账单明细</title>
+	<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script src="./jquery.js"></script>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			border:0;
+			font-family: "Hiragino Sans GB", "Microsoft YaH`ei", 微软雅黑, arial, Tahoma, SimSun, sans-serif;
+		}
+		@media screen and (min-width: 640px) {
+			html {
+				background:#fafafa;
+				padding-top:20px;
+			}
+		    body {
+		    	width:480px;
+		    	margin:0 auto;
+		    	border:1px solid #ccc;
+		    	padding:10px;
+		    }
+		}
+		body{
+			border-top:3px solid #38f;
+		}
+		h2{
+			text-align: center;
+			padding-top:30px;
+			padding-bottom:30px;
+		}
+		b{
+			display: inline-block;
+			padding:5px 0;
+			border-bottom:2px solid #38f;
+		}
+		dl {
+			padding:20px 10px;
+		}
+		dl dd {
+			text-align: left;
+			padding-top:10px;
+			padding-left:0;
+			line-height: 23px;
+		}
+		table {
+			border-top:1px solid #ccc;
+			border-left:1px solid #ccc;
+			border-collapse:collapse;  		
+			border-spacing:0;  
+		}
+		table td{
+			border-right:1px solid #ccc;
+			border-bottom:1px solid #ccc;
+			padding:5px;
+		}
+		
+		dl.mx span{
+			color:red;
+			font-size:20px;
+
+		}
+		.table{
+			border-left:1px solid #ccc;
+			border-top:1px solid #ccc;
+			font-size:0;
+			line-height: 0;
+		}
+		.table .ch{
+
+			border-bottom:1px solid #ccc;
+			border-right:1px solid #ccc;	
+		}
+		.table .cell{
+			position: relative;
+			border-bottom:1px solid #ccc;
+			border-right:1px solid #ccc;
+			display: inline-block;
+			width:25%;
+			box-sizing:border-box;
+			-moz-box-sizing:border-box; /* Firefox */
+			-webkit-box-sizing:border-box; /* Safari */
+			text-align: left;
+			padding-left: 5px;
+			font-size:12px;
+			line-height: 40px;
+			font-weight: bold;
+			color:#38f;
+		}
+		.table .cell .f{
+			position: absolute;
+			top:0px;
+			right:0px;
+			
+			height:0;
+			
+			
+			line-height: 12px;
+
+		}
+		.table .cell .f span{
+			background: rgba(255,0,0,0.3);
+			padding:1px;
+			border-radius: 1px;
+			color:#fff;
+			display: block;
+			margin-bottom:2px;
+			font-weight: normal;
+		}
+		.table .cell .p{
+			color:red;
+			position: absolute;
+			top:0;right:0;
+			background: red;
+			color:#fff;
+			height:16px;
+			padding:2px;
+			line-height: 16px;
+		}
+		.table .cell.disabled{
+			color:#cfcfcf;
+			font-weight: normal;
+
+		}
+		.cellbg0{
+			background:rgba(51, 136, 255,0.1);
+		}
+		.cellbg1{
+			background:rgba(255, 0, 0,0.1);
+		}
+		.cell_line{
+			position: relative;
+		}
+		.cell_line:before {
+			content: attr(data-tips);
+			position: absolute;
+			top:0;left:0;
+			display: block;
+			width:100%;
+			height:120px;
+			z-index: 1;
+			line-height: 120px;
+			text-align: center;
+			color:rgba(255,0,0,0.01);
+			font-size:30px;
+			font-weight: bold;
+		}
+		.cell_line.cellbg0:before {
+			color:rgba(255, 0, 0,0.09);
+		}
+		.cell_line.cellbg1:before {
+			color:rgba(51, 136, 255,0.09);
+		}
+		#cell {
+			overflow: hidden;
+		}
+		 img{
+			display: inline-block;
+			width:99%;
+		}
+		a{
+			color:blue;
+		}
+		body > a{
+			margin-left:10px;
+			color:blue;
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body>
+<h2>@阳斌 @露露妹账单明细</h2>
+ <a href="./qz.html">电梯修建签字表</a> <a href="./index.html">财务收支公示表</a>
+
+<dl class="mx">
+	<dt><b>概况</b></dt>
+	<dd>
+		<p>总入账: <span class="all">10959</span> 元 (其中包括从@露露妹处移交<span>791</span>元)</p>
+		<p>总支出: <span>4087</span></p>
+		<p>总结余: <span class="jy">6872</span> 元</p>
+	</dd>
+</dl>
+<dl>
+	<dt><b>账目统计</b> </dt>
+	<dd>
+	<img src="./img/all.jpg"/>
+	</dd>
+</dl>
+<dl>
+	<dt><b>入账统计</b> </dt>
+	<dd>
+		<h4>附：10块钱维权费交费名单：</h4>
+		<div class="table" id="cellwrap">
+		<img src="./img/1.jpg"/>
+			<img src="./img/2.jpg"/>
+			<img src="./img/3.jpg"/>
+			<img src="./img/4.jpg"/>
+			<img src="./img/5.jpg"/>
+			<img src="./img/6.jpg"/>
+		</div>
+	</dd>
+</dl>
+
